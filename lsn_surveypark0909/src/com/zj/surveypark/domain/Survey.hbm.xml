@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-8-22 19:59:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.zj.surveypark.domain.Survey" table="surveys">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="java.lang.String">
+            <column name="title" length="200" />
+        </property>
+        <property name="preText" type="java.lang.String">
+            <column name="preText" length="50" />
+        </property>
+        <property name="nextText" type="java.lang.String">
+            <column name="nextText" length="50" />
+        </property>
+        <property name="exitText" type="java.lang.String">
+            <column name="exitText" length="50" />
+        </property>
+        <property name="doneText" type="java.lang.String">
+            <column name="doneText" length="50" />
+        </property>
+        <property name="createTime" type="timestamp" update="false">
+            <column name="createTime" />
+        </property>
+        <property name="closed" type="boolean" update="false">
+            <column name="closed" />
+        </property>
+        <!-- 上传文件路径 -->
+        <property name="logoPhotoPath" type="java.lang.String" update="false">
+            <column name="logoPhotoPath" length="200" />
+        </property>
+        <!-- 通过公式查询最大最小页序 -->
+        <property name="maxOrderno" formula="(select max(p.orderno) from pages p where p.surveyid = id)" />
+		<property name="minOrderno" formula="(select min(p.orderno) from pages p where p.surveyid = id)" />
+        <!-- 映射从Survey到User之间多对一关联关系 -->
+        <many-to-one name="user" class="com.zj.surveypark.domain.User" column="userId"></many-to-one>
+        <!-- 映射从Survey到Page之间一对多关联关系 -->
+        <set name="pages" inverse="true" order-by="orderno">
+        	<key column="surveyId"></key>
+        	<one-to-many class="com.zj.surveypark.domain.Page"/>
+        </set>
+    </class>
+</hibernate-mapping>
