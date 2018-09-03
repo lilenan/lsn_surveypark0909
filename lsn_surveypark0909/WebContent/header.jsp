@@ -13,7 +13,7 @@
 		[用户注册]&nbsp;
 		[用户授权管理]&nbsp;
 		[角色管理]&nbsp;
-		[权限管理]&nbsp;
+		<s:a action="RightAction_findAllRights" namespace="/">[权限管理]</s:a>&nbsp;
 		[日志管理]&nbsp;
 	</div>
 </div>

@@ -2,6 +2,7 @@ package com.zj.surveypark.service;
 
 import java.util.List;
 
+
 /**
  * 这种service一般用于单体操作
  */
@@ -19,4 +20,6 @@ public interface BaseService<T> {
 	public List<T> findEntityByHql(String hql,Object...objects);
 	//单值检索（查询结果有且仅有一条记录）
 	public Object uniqueResult(String hql,Object...objects);
+	//查询所有实体
+	public List<T> findAllEntities();
 }

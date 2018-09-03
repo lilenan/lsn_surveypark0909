@@ -20,5 +20,11 @@
         <property name="regDate" type="timestamp" update="false">
             <column name="regDate" />
         </property>
+        
+        <!-- 角色集合 -->
+        <set name="roles" table="user_role_link">
+        	<key column="userid"></key>
+        	<many-to-many class="com.zj.surveypark.domain.security.Role" column="roleid"></many-to-many>
+        </set>
     </class>
 </hibernate-mapping>

@@ -11,8 +11,10 @@
 		<interceptors>
 			<!-- 注册自定义登录拦截器 -->
 			<interceptor name="loginInterceptor" class="com.zj.surveypark.struts2.interceptor.LoginInterceptor" />
+			<interceptor name="catchUrlInterceptor" class="com.zj.surveypark.struts2.interceptor.CatchUrlInterceptor" />
 			<!-- 自定义拦截器栈 -->
 			<interceptor-stack name="surveyparkStack">
+				<interceptor-ref name="catchUrlInterceptor" />
 				<interceptor-ref name="loginInterceptor" />
 				<!-- <interceptor-ref name="paramsPrepareParamStack" /> -->
 				<interceptor-ref name="defaultStack">
@@ -131,6 +133,17 @@
 			<result name="6">/matrixNormalStatistics.jsp</result>
 			<result name="7">/matrixNormalStatistics.jsp</result>
 			<result name="8">/matrixSelectStatistics.jsp</result>
+		</action>
+		
+		<!-- RightAction -->
+		<action name="RightAction_*" class="rightAction" method="{1}">
+			<result name="rightListPage">/rightList.jsp</result>
+			<result name="addRightPage">/editRight.jsp</result>
+			<result name="editRightPage">/editRight.jsp</result>
+			<result name="findAllRightsAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">RightAction_findAllRights</param>
+			</result>
 		</action>
 	</package>
 </struts>
