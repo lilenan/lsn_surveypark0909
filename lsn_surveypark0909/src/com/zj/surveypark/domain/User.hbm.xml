@@ -22,7 +22,7 @@
         </property>
         
         <!-- 角色集合 -->
-        <set name="roles" table="user_role_link">
+        <set name="roles" table="user_role_link" lazy="false">
         	<key column="userid"></key>
         	<many-to-many class="com.zj.surveypark.domain.security.Role" column="roleid"></many-to-many>
         </set>
