@@ -16,6 +16,7 @@ import org.apache.struts2.util.ServletContextAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.zj.surveypark.datasource.SurveyToken;
 import com.zj.surveypark.domain.Answer;
 import com.zj.surveypark.domain.Page;
 import com.zj.surveypark.domain.Survey;
@@ -124,6 +125,11 @@ public class EngageSurveyAction extends BaseAction<Survey> implements ServletCon
 		}else if(submitName.endsWith("done")){
 			//合并参数到session中
 			mergeParamsIntoSession();
+			//绑定令牌到当前线程
+			SurveyToken token=new SurveyToken();
+			token.setCurrentSurvey(getCurrentSurvey());
+			SurveyToken.bindingToken(token);
+			
 			//答案入库
 			surveyService.saveAnswers(processAnswers());
 			//清除数据

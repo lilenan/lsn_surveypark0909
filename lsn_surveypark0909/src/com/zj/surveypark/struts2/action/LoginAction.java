@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.zj.surveypark.domain.User;
+import com.zj.surveypark.service.RightService;
 import com.zj.surveypark.service.UserService;
 import com.zj.surveypark.util.DataUtil;
 
@@ -23,6 +24,8 @@ public class LoginAction extends BaseAction<User> implements SessionAware  {
 	
 	@Resource
 	private UserService userService;
+	@Resource
+	private RightService rightService;
 	//接受session的map
 	private Map<String, Object> sessionMap;
 	/**
@@ -44,8 +47,14 @@ public class LoginAction extends BaseAction<User> implements SessionAware  {
 		if(user==null){
 			addActionError("email/password wrong");
 		}else{
+			//初始化权限总和数组
+			int maxRightPos=rightService.getMaxRightPos();
+			user.setRightSum(new long[maxRightPos+1]);
+			//计算用户的权限的总和
+			user.calculateRightSum();
 			/*HttpSession s= ServletActionContext.getRequest().getSession();
 			s.setAttribute(arg0, arg1);//原生API，会增加耦合*/
+			//user-->session
 			sessionMap.put("user", user);
 		}
 	}

@@ -1,15 +1,28 @@
 package com.zj.surveypark.domain.security;
 
+import com.zj.surveypark.domain.BaseEntity;
+
 /**
  * 权限
  */
-public class Right {
+public class Right extends BaseEntity {
+	private static final long serialVersionUID = 633033750518120784L;
 	private Integer id;
 	private String rightName = "未命名";
 	private String rightUrl;
 	private String rightDesc;
 	private long rightCode;// 权限码,1<<n
 	private int rightPos; // 权限位,相当于对权限分组,从0开始
+	
+	private boolean common;//是否是公共资源
+
+	public boolean isCommon() {
+		return common;
+	}
+
+	public void setCommon(boolean common) {
+		this.common = common;
+	}
 
 	public Integer getId() {
 		return id;

@@ -30,5 +30,10 @@ public interface RightService extends BaseService<Right> {
 	 */
 	public List<Right> findRightsNotInRange(Set<Right> rights);
 
+	/**
+	 * 查询 最大的权限位
+	 */
+	public int getMaxRightPos();
+
 
 }

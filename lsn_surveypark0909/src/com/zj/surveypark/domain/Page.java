@@ -1,13 +1,12 @@
 package com.zj.surveypark.domain;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Page
  */
-public class Page implements Serializable {
+public class Page extends BaseEntity {
 	
 	private static final long serialVersionUID = -7539333158034676404L;
 	private Integer id;

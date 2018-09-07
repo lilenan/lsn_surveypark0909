@@ -41,4 +41,11 @@ public class StringUtil {
 		}
 		return null;
 	}
+	
+	public static String getDescString(String str){
+		if(ValidateUtil.isValid(str)&&str.length()>30){
+			return str.substring(0,29);
+		}
+		return str;
+	}
 }

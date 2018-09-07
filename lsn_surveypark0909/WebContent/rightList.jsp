@@ -78,6 +78,8 @@
 						<td class="tdListHeader">权限名称</td>
 						<td class="tdListHeader">
 							公共资源<br>
+							<input type="checkbox" id="cbSelectAll">全选
+							<a id="inverseSelectAll" href="#">反选</a>
 						</td>
 						<td class="tdListHeader">权限URL</td>
 						<td class="tdListHeader">权限位</td>
@@ -91,14 +93,13 @@
 						<s:set var="rightId" value="id" />
 						<tr>
 							<td>
-								<%-- <s:property value="id" /> --%>
-								<s:textfield name="allRights[%{#st.index}].id" cssClass="text" cssStyle="width:50px" />
+								<s:textfield name="allRights[%{#st.index}].id" cssClass="text" readonly="true" cssStyle="width:25px"/>
 							</td>
 							<td>
-								<%-- <s:property value="rightName" /> --%>
-								<s:textfield name="allRights[%{#st.index}].rightName" cssClass="text" cssStyle="width:150px" />
+								<s:textfield name="allRights[%{#st.index}].rightName"  cssClass="text" cssStyle="width:120px"/>
 							</td>
 							<td style="text-align: left;">
+								<s:checkbox name="allRights[%{#st.index}].common" />
 							</td>
 							<td style="text-align: left;"><s:property value="rightUrl" /></td>
 							<td style="color: gray;text-align: left;"><s:property value="rightPos" /></td>

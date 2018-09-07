@@ -85,4 +85,14 @@ public class RoleAction extends BaseAction<Role> {
 		this.noOwnRights=rightService.findRightsNotInRange(model.getRights());
 		return "editRolePage";
 	}
+	
+	/**
+	 * É¾³ý½ÇÉ«
+	 */
+	public String deleteRole(){
+		Role r=new Role();
+		r.setId(roleId);
+		roleService.deleteEntity(r);
+		return "findAllRolesAction";
+	}
 }

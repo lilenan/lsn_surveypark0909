@@ -1,13 +1,12 @@
 package com.zj.surveypark.domain;
 
-import java.io.Serializable;
 
 import com.zj.surveypark.util.StringUtil;
 
 /**
  * 问题实体
  */
-public class Question implements Serializable {
+public class Question extends BaseEntity {
 
 	private static final long serialVersionUID = -5993994195550316750L;
 	private static final String RN="\r\n";

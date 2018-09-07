@@ -2,7 +2,10 @@ package com.zj.surveypark.domain;
 
 import java.util.Date;
 
-public class Answer {
+public class Answer extends BaseEntity {
+ 
+	private static final long serialVersionUID = 3684180379288176567L;
+	
 	private Integer id;
 	private String answerIds;//选项的索引
 	private String otherAnswer;

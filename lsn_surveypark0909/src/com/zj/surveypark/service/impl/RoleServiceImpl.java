@@ -1,10 +1,8 @@
 package com.zj.surveypark.service.impl;
 
-
-
-
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -15,6 +13,7 @@ import com.zj.surveypark.domain.security.Right;
 import com.zj.surveypark.domain.security.Role;
 import com.zj.surveypark.service.RightService;
 import com.zj.surveypark.service.RoleService;
+import com.zj.surveypark.util.DataUtil;
 import com.zj.surveypark.util.ValidateUtil;
 
 /**
@@ -46,4 +45,13 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements
 		this.saveOrUpdateEntity(model);
 	}
 
+	public List<Role> findRolesNotInRange(Set<Role> roles) {
+		if(!ValidateUtil.isValid(roles)){
+			return this.findAllEntities();
+		}else{
+			String hql="from Role r where r.id not in ("+DataUtil.extractEntityIds(roles)+")";
+			return this.findEntityByHql(hql);
+		}
+	}
+	
 }

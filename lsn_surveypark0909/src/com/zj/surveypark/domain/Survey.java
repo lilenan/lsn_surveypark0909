@@ -1,6 +1,5 @@
 package com.zj.surveypark.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +7,7 @@ import java.util.Set;
 /**
  * Survey
  */
-public class Survey implements Serializable{
+public class Survey extends BaseEntity{
 
 	private static final long serialVersionUID = 3351359893694085688L;
 	private Integer id;

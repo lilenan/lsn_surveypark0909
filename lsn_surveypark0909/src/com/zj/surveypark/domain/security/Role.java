@@ -3,13 +3,16 @@ package com.zj.surveypark.domain.security;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.zj.surveypark.domain.BaseEntity;
+
 /**
  * 角色
  */
-public class Role {
+public class Role extends BaseEntity {
+	private static final long serialVersionUID = 3788604719883885658L;
 	private Integer id;
 	private String roleName;
-	private String roleValue;
+	private String roleValue;//-1:超级管理员
 	private String roleDesc;
 
 	// 建立从Role到Right之间多对多关联关系

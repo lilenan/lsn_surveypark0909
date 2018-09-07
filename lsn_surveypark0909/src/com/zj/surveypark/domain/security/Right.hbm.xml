@@ -12,5 +12,6 @@
 		<property name="rightDesc" column="rightdesc" type="java.lang.String" length="200" />
 		<property name="rightPos" column="rightpos" type="java.lang.Integer" update="false"/>
 		<property name="rightCode" column="rightcode" type="long" update="false" />
+		<property name="common" column="common" type="boolean" />
 	</class>
 </hibernate-mapping>
